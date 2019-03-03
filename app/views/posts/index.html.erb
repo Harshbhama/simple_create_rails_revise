@@ -1,4 +1,6 @@
+<br>
 
+<p> Create Post </p>
 <div>
 	<%= form_for @post, url: posts_new_path do |p| %>
 		<%= p.label :title %>
@@ -7,6 +9,49 @@
 		<%= p.label :content %>
 		<%= p.text_area :content %>
 		<br>
-		<%= p.submit %>
+		<%= p.submit %>			
+
+		
 	<% end %>
+
+
+</div>
+
+<p> Posts are</p>
+
+
+<div>
+	<% @posts.each do |post| %>
+		Title----<%= post.title %>
+		<br>
+		Content----<%= post.content %>
+		<%= link_to "Delete ", post_delete_path(post.id), method: :delete %>
+		<br>
+			<div>
+				<p> CREATE COMMENT </p>
+					<div>
+				<%= form_for @comment, url: comments_create_path do |c| %>
+					<%= c.hidden_field :post_id, value: post.id%>
+					<%= c.label :Content%>
+					<%= c.text_area :content%>
+					<%= c.submit %>
+				<% end %>
+								<p>--------Comments are</p>
+
+					</div>
+					<% post.comments.each do |comment| %>
+						<p>..<%= comment.content%></p>
+					<% end %>
+			</div>
+			
+	<% end %>
+	
+</div>
+
+
+
+
+<div>
+
+
 </div>

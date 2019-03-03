@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   # get 'posts/new', to: 'posts#new'
 
   post 'posts/create', to: 'posts#create', as: :posts_new
+
+  delete 'posts/delete/:id', to: 'posts#destroy', as: :post_delete
+
+  root 'posts#index'
+
+  post 'comments/create', to: 'comments#create', as: :comments_create
 end

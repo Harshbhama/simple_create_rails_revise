@@ -4,16 +4,22 @@ class PostsController < ApplicationController
 
 		@posts = Post.all
 		@post = Post.new
+
+		@comment = Comment.new
 	end
 
 	def create
 
 		post = Post.create(title: params[:post][:title], content: params[:post][:content])
+		redirect_to root_path
 
 	end
-	def new
+	
+	def destroy
+		@post = Post.find_by(params[:id])
+		@post.destroy
 
-		@post = Post.new
-
+		redirect_to root_path
+							
 	end
 end
