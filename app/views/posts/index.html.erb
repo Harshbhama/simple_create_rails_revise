@@ -43,6 +43,26 @@
 						<p>..<%= comment.content%></p>
 					<% end %>
 			</div>
+			<div>
+
+				<p> CREATE IMAGES </p>
+					<div>
+						
+						<%= form_for @image, url: images_path do |i| %>
+						<%= i.label :Image %>
+						<%= i.file_field :avatar %>
+						<%= i.hidden_field :post_id, value: post.id %>
+						<%= i.submit %>
+						<% end %>
+
+					</div>
+			</div>
+
+			<div>
+				<% post.images.each do |image| %>
+				<%= image_tag image.avatar.url, id:"image-style" %>
+				<% end %>
+			</div>
 			
 	<% end %>
 	

@@ -6,6 +6,8 @@ class PostsController < ApplicationController
 		@post = Post.new
 
 		@comment = Comment.new
+		@image = Image.new
+		@images = Image.all
 	end
 
 	def create

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'posts', to: 'posts#index'
@@ -12,4 +13,6 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   post 'comments/create', to: 'comments#create', as: :comments_create
+
+  post 'images/create', to: 'images#create', as: :images
 end
