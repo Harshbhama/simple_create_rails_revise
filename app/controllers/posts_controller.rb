@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
 	def create
 
-		post = Post.create(title: params[:post][:title], content: params[:post][:content])
+		post = Post.create(title: params[:post][:title], content: params[:post][:content], user_id: current_user.id)
 		redirect_to root_path
 
 	end
