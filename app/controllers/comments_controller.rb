@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
 		redirect_to root_path
 
 
-		UserMailer.new_comment(@comment.id).deliver_now
+		# UserMailer.new_comment(@comment.id).deliver_now
+
+		Resque.enqueue(NewCommentEmail, @comment.id)
 	end
 end
